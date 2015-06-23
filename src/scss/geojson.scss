@@ -1,0 +1,35 @@
+.pinpoint-geojson {
+    stroke: #777;
+    stroke-width: 3;
+    stroke-opacity: 1;
+    fill-opacity: 0;
+}
+
+.pinpoint-geojson.dashed {
+    @extend .pinpoint-geojson;
+    stroke-dasharray: 6 6;
+}
+
+.pinpoint-geojson.dashed-clockwise {
+    @extend .pinpoint-geojson.dashed;
+    animation: dash 100s linear infinite reverse;
+    -webkit-animation: dash 100s linear infinite reverse;
+}
+
+.pinpoint-geojson.dashed-anticlockwise {
+    @extend .pinpoint-geojson.dashed-clockwise;
+    animation: dash 100s linear infinite;
+    -webkit-animation: dash 100s linear infinite;
+}
+
+@-webkit-keyframes dash {
+    to {
+        stroke-dashoffset: 600;
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 600;
+    }
+}

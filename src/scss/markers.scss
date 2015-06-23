@@ -1,0 +1,34 @@
+
+/* markers */
+.marker-circle {
+    stroke: none;
+    fill: black;
+    fill-opacity: 1;
+}
+.marker-icon{
+    width: 20px;
+    height: 20px;
+    background: black;
+    margin-left: 10px;
+}
+.marker-icon-square {
+    // default
+}
+.marker-icon-circle {
+    border-radius: 1000px;
+}
+.marker-icon-none {
+    opacity: 0;
+}
+
+@mixin marker-inner {
+    display: inline-block;
+    white-space: nowrap;
+    height: auto !important;
+    position: relative;
+    line-height: initial;
+}
+
+@import 'marker-label-plain';
+@import 'marker-label-callout';
+

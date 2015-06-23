@@ -1,0 +1,45 @@
+
+
+
+
+.marker-label-callout {
+    margin-top: -50px !important;
+    margin-left: -50% !important;
+    .marker-inner {
+        @include marker-inner;
+        font-family: 'Whitney Ssm', sans-serif;
+        background: black;
+        color: white;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 6px;
+        margin-top: -6px;
+        &:after {
+            content: "";
+            top: 100%;
+            left: 50%;
+            height: 22px;
+            width: 2px;
+            background: black;
+            position: absolute;
+            pointer-events: none;
+            margin-left: -1px;
+        }
+    }
+}
+
+.marker-label-callout.north {
+    // default
+}
+
+.marker-label-callout.south {
+    .marker-inner {
+        margin-top: 72px;
+        &:after {
+        	top: 0;
+        	border-color: rgba(0, 0, 0, 0);
+            border-bottom-color: #000000;
+        	margin-top: -20px;
+        }
+    }
+}

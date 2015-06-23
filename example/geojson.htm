@@ -1,0 +1,135 @@
+
+<!-- this is all the HTML you need -->
+<div class="test-map" style="width: 300px;"></div>
+
+<!-- including all necessary files -->
+<link href="http://fonts.wsj.net/HCo_Whitney/font_HCo_Whitney.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" type="text/css" charset="utf-8">
+
+<script type="text/javascript" src="https://rawgit.com/Norkart/Leaflet-MiniMap/master/dist/Control.MiniMap.min.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/Norkart/Leaflet-MiniMap/master/dist/Control.MiniMap.min.css" type="text/css" charset="utf-8">
+
+<!-- pinpoint itself -->
+<script src="../dist/pinpoint.min.js"></script>
+<link rel="stylesheet" href="../dist/pinpoint.min.css" type="text/css" charset="utf-8">
+
+
+<!-- now for the JavaScript -->
+<script>
+var data = {
+    "hed": "The U.K. and France",
+    "dek": "This is a test map.",
+    // "hed": "",
+    // "dek": "",
+    "lat": 51.5049378,
+    "lon": -0.0870377,
+    "zoom": 2,
+    "minimap": false,
+    "aspect-ratio": "tall",
+    "minimap-zoom-offset": -5,
+    "markers": [{
+        "lat": 51.5049378,
+        "lon": -0.0870377,
+        "text": "",
+        "icon": "square",
+        "label-direction": "north",
+        "labelDirection": "north",
+        "label": "plain"
+    }],
+    "geojson": {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {
+                "pinpointStyle": "dashed-anticlockwise"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [-0.703125,
+                        47.98992166741417
+                    ],
+                    [
+                        6.328125,
+                        45.82879925192134
+                    ]
+                ]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "pinpointStyle": "regular"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            25.6640625,
+                            56.17002298293205
+                        ],
+                        [
+                            39.0234375,
+                            63.548552232036414
+                        ],
+                        [
+                            52.03125,
+                            49.61070993807422
+                        ],
+                        [
+                            35.5078125,
+                            41.508577297439324
+                        ],
+                        [
+                            25.6640625,
+                            56.17002298293205
+                        ]
+                    ]
+                ]
+            }
+        },
+    
+        {
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -30.234375,
+                  31.353636941500987
+                ],
+                [
+                  -30.234375,
+                  55.7765730186677
+                ],
+                [
+                  -12.3046875,
+                  55.7765730186677
+                ],
+                [
+                  -12.3046875,
+                  31.353636941500987
+                ],
+                [
+                  -30.234375,
+                  31.353636941500987
+                ]
+              ]
+            ]
+          }
+        },
+        {}
+      ]
+    }
+};
+
+
+data.el = '.test-map';
+new Pinpoint(data);
+
+</script>

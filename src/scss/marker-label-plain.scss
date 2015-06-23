@@ -1,0 +1,70 @@
+
+.marker-label-plain {
+    margin-top: -28px !important;
+    margin-left: 100% !important;
+    .marker-inner {
+        @include marker-inner;
+        font-family: 'Whitney Ssm', sans-serif;
+        color: black;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+.marker-label-plain.north {
+    // same as default
+}
+
+.marker-label-plain.northeast {
+    margin-top: -25px !important;
+    .marker-inner {
+        margin-left: 10px !important;
+    }
+}
+
+.marker-label-plain.east {
+    margin-top: -10px !important;
+    .marker-inner {
+        margin-left: 10px !important;
+    }
+}
+
+.marker-label-plain.southeast {
+    margin-top: 8px !important;
+    .marker-inner {
+        margin-left: 10px !important;
+    }
+}
+
+
+.marker-label-plain.south {
+    margin-top: 5px !important;
+}
+
+.marker-label-plain.southwest {
+    margin-top: 8px !important;
+    .marker-inner {
+        margin-right: 25px !important;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.marker-label-plain.west {
+    margin-top: -10px !important;
+    .marker-inner {
+        margin-right: 25px !important;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.marker-label-plain.northwest {
+    margin-top: -25px !important;
+    .marker-inner {
+        margin-right: 25px !important;
+        position: absolute;
+        right: 0;
+    }
+}
+

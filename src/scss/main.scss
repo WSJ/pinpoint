@@ -1,0 +1,103 @@
+/*
+    Pinpoint v1.0.0
+*/
+
+.pinpoint-hed, .pinpoint-dek, .map-outer, .pinpoint-source, .pinpoint-note {
+    font-family: 'Whitney Ssm', sans-serif;
+}
+
+.map-inner {
+    width: 100%;
+}
+.map-outer {
+    position: relative;
+}
+.map-cover {
+    position: absolute;
+    top: 0;
+}
+.map-outer.inactive .map-cover {
+    content: '';
+    width: 100%;
+    z-index: 10000000;
+    cursor: pointer;
+/*        background: red;
+        opacity: 0.5; */
+    }
+.map-inner .leaflet-control-zoom {
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+.map-outer.inactive .leaflet-control-zoom {
+    opacity: 0;
+}
+
+.pinpoint-hed, .pinpoint-dek {
+    margin: 0;
+    padding: 0;
+}
+
+.pinpoint-hed {
+    font-size: 16px;
+    padding-bottom: 5px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.pinpoint-dek {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    color: #666;
+    font-weight: 400;
+}
+
+.pinpoint-topline {
+    border-top: 1px solid #dadada;
+    padding-top: 7px;
+}
+
+.pinpoint-source, .pinpoint-note {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+    a:link, a:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.pinpoint-note {
+    margin-bottom: 0;
+}
+
+.leaflet-control-scale-line {
+    border: 0 !important;
+    background: none !important;
+    padding: 2px 0 !important;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 5px white;
+}
+.leaflet-control-scale-line:first-child {
+    border-bottom: 5px solid black !important;
+}
+.leaflet-control-scale-line:last-child {
+    border-top: 5px solid black !important;
+    margin-top: 4px !important;
+}
+.leaflet-control-minimap {
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+.leaflet-control-minimap .leaflet-zoom-hide > g:first-child:after {
+    content: 'xxxx';
+    display: block;
+}
+
+@import 'markers';
+@import 'overlay';
+@import 'geojson';
