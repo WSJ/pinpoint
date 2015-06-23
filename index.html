@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>Pinpoint: Open source mapping tools from The Wall Street Journal</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+        <link rel="stylesheet" href="lib/leaflet-minimap/leaflet-minimap.min.css" />
+        <link rel="stylesheet" href="dist/pinpoint.css" />
+        <link rel="stylesheet" href="style.css" />
+
+    </head>
+    <body>
+        
+        <div class="container">
+        
+            <header>
+        
+                <h1>Pinpoint</h1>
+                <p class="subhead">Open source mapping tools built by <em>The Wall Street Journal</em>.</p>
+            </header>
+        
+            <div class="row">
+        
+                <section class="col-sm-6" id="pinpoint-lib">
+            
+                    <h2><a href="https://github.com/dowjones/pinpoint">Pinpoint</a></h2>
+                    <p>A JavaScript library for creating beautifully simple maps in seconds.</p>
+            
+                    <h3>Live example</h3>
+                    <div id="map-el"></div>
+            
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Map settings are stored in a simple JSON format and can be generated using Pinpoint Editor.</li>
+                        <li>Fully responsive with touch-friendly "click-to-activate" behaviour.</li>
+                        <li>Powered by the awesome Leaflet.js.</li>
+                    </ul>
+            
+                    <h3>Quickstart</h3>
+            
+                    <p>Add jQuery, <a href="http://leafletjs.com/download.html">Leaflet</a>, <a href="https://github.com/Norkart/Leaflet-MiniMap">Leaflet Minimap</a>, pinpoint.js, pinpoint.css and <code>&lt;div id="map-el">&lt;/div></code> to your page.</p>
+                    <p>Then use this to create a new instance of Pinpoint:</p>
+            
+                    <pre><code>var map = new Pinpoint({
+    "lat": 51.5049378,
+    "lon": -0.0870377,
+    "zoom": 3,
+    "aspect-ratio": "wide",
+    "markers": [{
+        "lat": 51.5049378,
+        "lon": -0.0870377,
+        "text": "London"
+    }]
+});</code></pre>
+            
+                    <p>Full documentation <a href="https://github.com/dowjones/pinpoint">available on GitHub</a>.</p>
+            
+                </section>
+        
+                <section class="col-sm-6" id="pinpoint-editor">
+            
+                    <h2><a href="https://github.com/dowjones/pinpoint-editor">Pinpoint Editor</a></h2>
+                    <p>A self-hosted web app for creating and editing Pinpoint maps.</p>
+                
+                    <h3>What it looks like</h3>
+                    <img src="img/editor-screenshot-1.png" />
+            
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Simple user interface allows maps to be created in seconds.</li>
+                        <li>Flexible Angular app with Node backend.</li>
+                        <li>Built-in support for uploading JSON data files to Amazon S3.</li>
+                    </ul>
+
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>A node.js server</li>
+                        <li>A PostgresSQL database</li>
+                        <li>NPM and Bower for installing dependencies</li>
+                        <li>(optional) Amazon S3 to host data</li>
+                    </ul>
+            
+                    <p>Installation instructions and full documentation <a href="https://github.com/dowjones/pinpoint-editor">available on GitHub</a>.</p>
+            
+            
+                </section>
+        
+            </div><!-- .row -->
+            
+            <footer>
+                
+                <p>All code released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>. Pull requests welcomed.</p>
+                <p>Developed at <em>The Wall Street Journal</em> by Elliot Bentley with help from Dov Friedman, Renee Rigdon, Brett Taylor and Seth Hamblin.</p>
+                
+            </footer>
+            
+        </div><!-- .container -->
+        
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="lib/leaflet-minimap/leaflet-minimap.min.js"></script>
+    <script src="dist/pinpoint.js"></script>
+    <script src="script.js"></script>
+    
+        
+    </body>
+</html>

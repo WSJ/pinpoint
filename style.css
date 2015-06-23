@@ -1,0 +1,41 @@
+
+.subhead {
+    font-size: 130%;
+    font-weight: 500;
+    color: #777;
+}
+
+#map-el {
+    max-width: 300px;
+}
+
+section {
+    padding: 1px 0 20px 0;
+}
+
+section#pinpoint-lib {
+    border-right: 1px solid #ddd;
+    background: rgb(240, 247, 247);
+}
+
+section#pinpoint-editor {
+    background: rgb(247, 243, 238);
+}
+
+section img {
+    max-width: 100%;
+}
+
+footer {
+    padding: 20px 0;
+}
+
+/* Tweak Bootstap style */
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size:18px;
+}
