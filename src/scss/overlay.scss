@@ -1,0 +1,49 @@
+
+/* overlay icon */
+.image-interactive-icon {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    cursor: pointer;
+    display: none;
+}
+
+.map-outer.inactive .image-interactive-icon {
+    display: block;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    border-radius: 4px;
+    background-size: 50px 50px;
+    background-color: white;
+    z-index: 999;
+    opacity: 1;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 8px 10px;
+    box-shadow: 0 0 3px #777;
+    > svg {
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 8px;
+    }
+    .image-interactive-icon-text {
+        vertical-align: middle;
+    }
+    &.image-interactive-icon-hover {
+        display: none;
+        background-color: #007ec5;
+        color: white;
+    }
+    
+}
+
+
+.map-outer.inactive:hover {
+    .image-interactive-icon {
+        display: none;
+        &.image-interactive-icon-hover {
+            display: block;
+        }
+    }
+} 

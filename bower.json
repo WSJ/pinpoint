@@ -1,0 +1,23 @@
+{
+  "name": "pinpoint-library",
+  "version": "1.0.0",
+  "authors": [
+    "ejb <mail@elliotbentley.com>"
+  ],
+  "license": "MIT",
+  "main": [
+    "dist/pinpoint.js",
+    "dist/pinpoint.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "description": "A JavaScript library for creating beautifully simple maps in seconds.",
+  "moduleType": [
+    "globals"
+  ]
+}
