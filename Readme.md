@@ -1,8 +1,8 @@
 # Pinpoint
 
-A JavaScript library for creating beautifully simple maps in seconds. Developed at The Wall Street Journal.
+A JavaScript library for creating beautifully simple maps in seconds, developed at The Wall Street Journal.
 
-- [Example on WSJ.com](http://www.wsj.com/articles/mass-grave-of-boko-haram-victims-discovered-1426867025)
+- [Example on WSJ.com](http://www.wsj.com/articles/building-collapses-in-manhattans-east-village-1427399472) (halfway down page)
 - [Blog post](http://ejb.github.io/2015/03/21/pinpoint-maps-at-wsj.html)
 
 ## Features
@@ -63,7 +63,7 @@ note                | string   | (blank)                                    | No
 minimap             | boolean  | false                                      | Set to `true` to enables zoomed-out smaller map in corner.
 minimap-zoom-offset | number   | -5                                         | Zoom level of minimap relative to main map zoom. Should always be below 0.
 basemap             | string   | "http://{s}.tile.osm.org/{z}/{x}/{y}.png"  | Leaflet tile layer [URL template](http://leafletjs.com/reference.html#url-template) (optional)
-basemapCredit       | string   | "Leaflet | © OpenStreetMap contributors"   | Credit for tilelayer. Goes at bottom, below note. (optional)
+basemapCredit       | string   | "Leaflet \| © OpenStreetMap contributors"   | Credit for tilelayer. Goes at bottom, below note. (optional)
 creation            | boolean  | false                                      | Set to `true tot enables "creation mode" for use in admin tool.
 dragend             | function | undefined                                  | Anonymous function called on Leaflet `dragend` event (ie. when dragging/panning map).
 zoomend             | function | undefined                                  | Anonymous function called on Leaflet `zoomend` event (ie. when zooming).
