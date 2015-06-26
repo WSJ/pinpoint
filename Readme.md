@@ -2,7 +2,7 @@
 
 A JavaScript library for creating beautifully simple maps in seconds, developed at The Wall Street Journal.
 
-- [Example on WSJ.com](http://www.wsj.com/articles/mass-grave-of-boko-haram-victims-discovered-1426867025)
+- [Example on WSJ.com](http://www.wsj.com/articles/building-collapses-in-manhattans-east-village-1427399472) (halfway down page)
 - [Blog post](http://ejb.github.io/2015/03/21/pinpoint-maps-at-wsj.html)
 
 ## Features
