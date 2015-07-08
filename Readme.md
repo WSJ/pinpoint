@@ -13,7 +13,7 @@ A JavaScript library for creating beautifully simple maps in seconds, developed 
 
 ## Quickstart
 
-Include `pinpoint.js` and `pinpoint.css` on your page.
+Include `pinpoint.js`, `pinpoint.css` and jQuery on your page.
 
 In terms of HTML, just a single div is needed:
 
