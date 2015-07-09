@@ -4,6 +4,10 @@
 
 function Pinpoint(opts){
     'use strict';
+    
+    if (window.L == null) {
+        throw("Leaflet.js not present on page.");
+    }
 
     var that = this;
     this.opts = opts;
@@ -257,7 +261,7 @@ Pinpoint.prototype.fillText = function(){
     } else {
         this.$el.find('.pinpoint-note').hide();
     }
-    this.$el.find('.pinpoint-hed:visible(), .pinpoint-dek:visible()').eq(0).addClass('pinpoint-topline');
+    this.$el.find('.pinpoint-hed:visible, .pinpoint-dek:visible').eq(0).addClass('pinpoint-topline');
 }
 
 Pinpoint.prototype.disableInteraction = function(){

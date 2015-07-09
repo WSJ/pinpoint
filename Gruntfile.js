@@ -36,6 +36,10 @@ module.exports = function(grunt) {
             }
         },
         
+        qunit: {
+            files: ['test/**/*.html']
+        },
+        
         watch: {
             options: {
                 livereload: true,
@@ -63,9 +67,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
 	
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat','uglify','sass']);
+    grunt.registerTask('default', ['compile','test']);
+    grunt.registerTask('compile', ['concat','uglify','sass']);
+    grunt.registerTask('test', ['qunit']);
 
 };
