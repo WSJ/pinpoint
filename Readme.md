@@ -148,6 +148,9 @@ Tests are carried out with [QUnit](http://qunitjs.com). To run tests, either ope
 
 ## Changelog
 
+v1.1.1 (July 17, 2015)
+
+- Fixed marker position bug
 
 v1.1.0 (July 17, 2015)
 

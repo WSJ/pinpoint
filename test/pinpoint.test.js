@@ -69,3 +69,31 @@ QUnit.test( "Dynamic height", function( assert ) {
     },200);
 });
 
+QUnit.test( "Marker placement", function( assert ) { 
+    var data = {
+        "lat": 51.5049378,
+        "lon": - 0.0870377,
+        "zoom": 4,
+        "aspect-ratio": "tall",
+        "hed": "Hi",
+        "dek": "You",
+        "markers": [{
+            "lat": 51.5049378,
+            "lon": - 0.0870377,
+            "label": ""
+        }]
+    };
+    data.el = '.test-map';
+
+    var p = new Pinpoint(data);    
+    assert.ok( ($('.marker-inner').offset().left / $('.map-inner').width()) < 0.5 );
+    p.remove();
+
+    data.markers[0].label = 'callout';
+    var p = new Pinpoint(data);
+    assert.ok( ($('.marker-inner').offset().left / $('.map-inner').width()) < 0.5 );
+    p.remove();
+
+});
+
+
