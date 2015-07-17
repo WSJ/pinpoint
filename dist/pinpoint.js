@@ -175,11 +175,13 @@ Pinpoint.prototype.addMarker = function(mopts, index){
     // L.marker([50.505, 30.57]).addTo(map);
     
     var miList = this.element.querySelectorAll('.marker-inner');
-    mi = miList[miList.length-1];
-	mi.style.marginLeft = -mi.outerWidth/2;
-	setTimeout((function(){
-    	mi.style.marginLeft = -mi.outerWidth/2;
-	}).bind(this),100);
+    for (var i = 0; i < miList.length; i++) {
+        var mi = miList[i];
+    	mi.style.marginLeft = (-mi.offsetWidth/2)+'px';
+    	setTimeout((function(){
+        	mi.style.marginLeft = (-mi.offsetWidth/2)+'px';
+    	}).bind(this),100);
+    }
     
     if (this.opts.markerdragend) {
         icon.on('dragend', this.opts.markerdragend);
