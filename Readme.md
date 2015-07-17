@@ -13,7 +13,7 @@ A JavaScript library for creating beautifully simple maps in seconds, developed 
 
 ## Quickstart
 
-Include `pinpoint.js`, `pinpoint.css` and jQuery on your page.
+Include `pinpoint.js`, `pinpoint.css` and [Leaflet](http://leafletjs.com/download.html) (both the JS and CSS) on your page.
 
 In terms of HTML, just a single div is needed:
 
@@ -147,6 +147,11 @@ To change the map's basemap/tilelayer, use the `basemap` configuration variable.
 Tests are carried out with [QUnit](http://qunitjs.com). To run tests, either open the HTML files in the `test/` folder individually, or install NPM and Grunt (see above for details) and run `grunt test`.
 
 ## Changelog
+
+
+v1.1.0 (July 17, 2015)
+
+- Removed jQuery dependency
 
 v1.0.1 (July 9, 2015)
 

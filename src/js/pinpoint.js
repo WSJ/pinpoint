@@ -49,9 +49,9 @@ function Pinpoint(opts){
     if (typeof Iframe !== 'undefined') {
         var fm = Iframe.init();
     }
-    if ($(window).smartresize) {
-        $(window).smartresize( this.onWindowResize.bind(that) );
-    }
+    this.onResize(function(){
+        that.setAspectRatio();
+    });
 }
 
 Pinpoint.prototype.addElements = function(){
@@ -72,6 +72,11 @@ Pinpoint.prototype.addElements = function(){
 
 Pinpoint.prototype.setAspectRatio = function(){
     
+    if( !this.element.querySelector('.map-inner') ){
+        return;
+    }
+    
+    
     var aspectRatios = {
         "tall": 1.2,
         "square": 1,
@@ -80,18 +85,15 @@ Pinpoint.prototype.setAspectRatio = function(){
     
     var aspectRatio = aspectRatios[this.opts['aspect-ratio']];
     var newHeight = this.element.querySelector('.map-inner').offsetWidth * aspectRatio;
-    this.element.querySelector('.map-inner, .map-cover').style.height = newHeight+'px';
+    var widthEls = this.element.querySelectorAll('.map-inner, .map-cover');
+    for (var i = 0; i < widthEls.length; i++) {
+        widthEls[i].style.height = newHeight+'px';
+    }
     
     if (this.map) {
         this.map.invalidateSize();
     }
         
-}
-
-Pinpoint.prototype.onWindowResize = function(){
-    this.setAspectRatio();
-    $(window).trigger('resize');
-    // this.map.setView([this.opts.lat, this.opts.lon]);
 }
 
 Pinpoint.prototype.setupMap = function(mapopts){
@@ -298,6 +300,7 @@ Pinpoint.prototype.enableInteraction = function(){
 }
 
 Pinpoint.prototype.remove = function(){
+    clearInterval( this.resizeInterval );
     this.map.outerHTML = '';
     this.element.innerHTML = '';
 }
@@ -334,3 +337,12 @@ Pinpoint.prototype.addGeoJSON = function(geojson){
     }
 }
 
+Pinpoint.prototype.onResize = function(callback) {
+    var currentWidth = this.element.offsetWidth;
+    this.resizeInterval = setInterval(function(){
+        if (currentWidth !== this.element.offsetWidth) {
+            currentWidth = currentWidth;
+            callback();
+        }
+    }.bind(this), 50);
+}
