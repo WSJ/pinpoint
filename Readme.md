@@ -13,7 +13,12 @@ A JavaScript library for creating beautifully simple maps in seconds, developed 
 
 ## Quickstart
 
-Include `pinpoint.js`, `pinpoint.css` and [Leaflet](http://leafletjs.com/download.html) (both the JS and CSS) on your page.
+Include:
+
+- `pinpoint.js`
+- `pinpoint.css`
+- [Leaflet](http://leafletjs.com/download.html) (both the JS and CSS)
+- [Leaflet Minimap](https://github.com/Norkart/Leaflet-MiniMap) (both the JS and CSS)
 
 In terms of HTML, just a single div is needed:
 
