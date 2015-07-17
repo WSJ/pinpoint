@@ -4,11 +4,15 @@
 
 function Pinpoint(opts){
     'use strict';
+    
+    if (window.L == null) {
+        throw("Leaflet.js not present on page.");
+    }
 
     var that = this;
     this.opts = opts;
     this.opts.el = this.opts.el || '#map-el';
-    this.$el = $(this.opts.el);
+    this.element = document.querySelector(this.opts.el);
     this.opts.basemap = opts.basemap || 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     this.opts.basemapCredit = opts.basemapCredit || '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
     
@@ -28,7 +32,7 @@ function Pinpoint(opts){
         
     }
 
-    this.$el.find('.map-outer').click( this.enableInteraction.bind(that) );
+    this.element.querySelector('.map-outer').addEventListener( 'click', this.enableInteraction.bind(that) );
     
     if (opts.minimap) {
         this.addMinimap();
@@ -38,7 +42,6 @@ function Pinpoint(opts){
         this.addMarker(opts.markers[i], i);
     }
     
-    console.log(opts);
     if (opts.geojson) {
         this.addGeoJSON(opts.geojson);
     }
@@ -46,9 +49,9 @@ function Pinpoint(opts){
     if (typeof Iframe !== 'undefined') {
         var fm = Iframe.init();
     }
-    if ($(window).smartresize) {
-        $(window).smartresize( this.onWindowResize.bind(that) );
-    }
+    this.onResize(function(){
+        that.setAspectRatio();
+    });
 }
 
 Pinpoint.prototype.addElements = function(){
@@ -64,10 +67,15 @@ Pinpoint.prototype.addElements = function(){
    ' </div>'+
    ' <p class="pinpoint-note"></p>'+
    ' <p class="pinpoint-source">'+this.opts.basemapCredit+'</p>';
-    this.$el.html( html );
+    this.element.innerHTML = html;
 }
 
 Pinpoint.prototype.setAspectRatio = function(){
+    
+    if( !this.element.querySelector('.map-inner') ){
+        return;
+    }
+    
     
     var aspectRatios = {
         "tall": 1.2,
@@ -76,19 +84,16 @@ Pinpoint.prototype.setAspectRatio = function(){
     };
     
     var aspectRatio = aspectRatios[this.opts['aspect-ratio']];
-    var newHeight = this.$el.find('.map-inner').width() * aspectRatio;
-    this.$el.find('.map-inner, .map-cover').height( newHeight );
+    var newHeight = this.element.querySelector('.map-inner').offsetWidth * aspectRatio;
+    var widthEls = this.element.querySelectorAll('.map-inner, .map-cover');
+    for (var i = 0; i < widthEls.length; i++) {
+        widthEls[i].style.height = newHeight+'px';
+    }
     
     if (this.map) {
         this.map.invalidateSize();
     }
         
-}
-
-Pinpoint.prototype.onWindowResize = function(){
-    this.setAspectRatio();
-    $(window).trigger('resize');
-    // this.map.setView([this.opts.lat, this.opts.lon]);
 }
 
 Pinpoint.prototype.setupMap = function(mapopts){
@@ -110,13 +115,14 @@ Pinpoint.prototype.setupMap = function(mapopts){
         attributionControl: false
 	};
     
-    var mapEl = this.$el.find('.map-inner')[0];
+    var mapEl = this.element.querySelector('.map-inner');
 	this.map = L.map(mapEl, mapOptions)
 		.setView([opts.lat, opts.lon], opts.zoom);
     L.control.scale({ position: 'topright' }).addTo(this.map); // scale bar
     // put miles on top of km
-    var $scaleParent = this.$el.find('.leaflet-control-scale.leaflet-control');
-    $scaleParent.find('.leaflet-control-scale-line').eq(0).detach().appendTo($scaleParent);
+    var scaleParent = this.element.querySelector('.leaflet-control-scale.leaflet-control');
+    var scaleLine = scaleParent.querySelector('.leaflet-control-scale-line');
+    scaleParent.appendChild(scaleLine);
 
 	L.tileLayer(this.opts.basemap).addTo(this.map);
     
@@ -168,10 +174,11 @@ Pinpoint.prototype.addMarker = function(mopts, index){
 
     // L.marker([50.505, 30.57]).addTo(map);
     
-    var $mi = this.$el.find('.marker-inner').eq(-1);
-	$mi.css( 'margin-left', -$mi.outerWidth()/2 );
+    var miList = this.element.querySelectorAll('.marker-inner');
+    mi = miList[miList.length-1];
+	mi.style.marginLeft = -mi.outerWidth/2;
 	setTimeout((function(){
-    		$mi.css( 'margin-left', -$mi.outerWidth()/2 );
+    	mi.style.marginLeft = -mi.outerWidth/2;
 	}).bind(this),100);
     
     if (this.opts.markerdragend) {
@@ -243,26 +250,32 @@ Pinpoint.prototype.calcBounds = function(){
 
 Pinpoint.prototype.fillText = function(){
     if (this.opts.hed && (this.opts.hed.length > 0)) {
-        this.$el.find('.pinpoint-hed').text( this.opts.hed );
+        this.element.querySelector('.pinpoint-hed').innerText = this.opts.hed;
     } else {
-        this.$el.find('.pinpoint-hed').hide();
+        this.element.querySelector('.pinpoint-hed').style.display = 'none';
     }
     if (this.opts.dek && (this.opts.dek.length > 0)) {
-        this.$el.find('.pinpoint-dek').text( this.opts.dek );
+        this.element.querySelector('.pinpoint-dek').innerText = this.opts.dek;
     } else {
-        this.$el.find('.pinpoint-dek').hide();
+        this.element.querySelector('.pinpoint-dek').style.display = 'none';
     }
     if (this.opts.note && (this.opts.note.length > 0)) {
-        this.$el.find('.pinpoint-note').html( this.opts.note );
+        this.element.querySelector('.pinpoint-note').innerHTML = this.opts.note;
     } else {
-        this.$el.find('.pinpoint-note').hide();
+        this.element.querySelector('.pinpoint-note').style.display = 'none';
     }
-    this.$el.find('.pinpoint-hed:visible(), .pinpoint-dek:visible()').eq(0).addClass('pinpoint-topline');
+    var hedDek = this.element.querySelectorAll('.pinpoint-hed, .pinpoint-dek');
+    for (var i = 0; i < hedDek.length; i++) {
+        var element = hedDek[i];
+        if (element.offsetWidth > 0 && element.offsetHeight > 0) {
+            element.className = element.className+' pinpoint-topline';
+        }
+    }
 }
 
 Pinpoint.prototype.disableInteraction = function(){
     var map = this.map;
-    this.$el.find('.map-outer').addClass('inactive');
+    this.element.querySelector('.map-outer').className += ' inactive';
     // map.dragging.disable();
     // map.touchZoom.disable();
     // map.doubleClickZoom.disable();
@@ -274,7 +287,9 @@ Pinpoint.prototype.disableInteraction = function(){
 
 Pinpoint.prototype.enableInteraction = function(){
     var map = this.map;
-    this.$el.find('.map-outer').removeClass('inactive');
+    var outer = this.element.querySelector('.map-outer');
+    outer.className = outer.className.replace(/inactive/g,'');
+    
     // map.dragging.enable();
     // map.touchZoom.enable();
     // map.doubleClickZoom.enable();
@@ -285,14 +300,14 @@ Pinpoint.prototype.enableInteraction = function(){
 }
 
 Pinpoint.prototype.remove = function(){
-    this.map.remove();
-    this.$el.empty();
+    clearInterval( this.resizeInterval );
+    this.map.outerHTML = '';
+    this.element.innerHTML = '';
 }
 
 Pinpoint.prototype.addGeoJSON = function(geojson){
     var map = this.map;
     var features = geojson.features;
-    console.log(features);
     for (var i = 0; i < features.length; i++) {
         if (features[i].geometry && features[i].geometry) {
             if (features[i].properties && features[i].properties.pinpointStyle) {
@@ -322,3 +337,12 @@ Pinpoint.prototype.addGeoJSON = function(geojson){
     }
 }
 
+Pinpoint.prototype.onResize = function(callback) {
+    var currentWidth = this.element.offsetWidth;
+    this.resizeInterval = setInterval(function(){
+        if (currentWidth !== this.element.offsetWidth) {
+            currentWidth = currentWidth;
+            callback();
+        }
+    }.bind(this), 50);
+}

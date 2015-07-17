@@ -13,7 +13,7 @@ A JavaScript library for creating beautifully simple maps in seconds, developed 
 
 ## Quickstart
 
-Include `pinpoint.js`, `pinpoint.css` and jQuery on your page.
+Include `pinpoint.js`, `pinpoint.css` and [Leaflet](http://leafletjs.com/download.html) (both the JS and CSS) on your page.
 
 In terms of HTML, just a single div is needed:
 
@@ -125,7 +125,7 @@ label-direction | string | "north"    | Marker label direction. Available direct
 You must have [npm](https://www.npmjs.com) and [grunt](http://gruntjs.com) installed.
 
 - `npm install`
-- `grunt`
+- `grunt` (this will also run tests)
 
 Note that the images in `src/img` are not auto-compiled - if they're changed, the SVG code will need to be copied into `pinpoint.js`.
 
@@ -142,7 +142,23 @@ The look of the map and its markers is mostly controlled with CSS/SASS. These fi
 
 To change the map's basemap/tilelayer, use the `basemap` configuration variable. See above for more details.
 
+## Running tests
+
+Tests are carried out with [QUnit](http://qunitjs.com). To run tests, either open the HTML files in the `test/` folder individually, or install NPM and Grunt (see above for details) and run `grunt test`.
+
 ## Changelog
+
+
+v1.1.0 (July 17, 2015)
+
+- Removed jQuery dependency
+
+v1.0.1 (July 9, 2015)
+
+- Fix bug when no head or deck
+- Throw useful error if Leaflet is missing
+- Add basic tests
+
 
 v1.0.0
 

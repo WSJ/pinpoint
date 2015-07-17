@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.16.0.css">
+  <link rel="stylesheet" href="../dist/pinpoint.css">
+</head>
+<body>
+    
+    <div class="test-map"></div>
+    
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script src="http://code.jquery.com/qunit/qunit-1.16.0.js"></script>
+  <script src="bind-polyfill.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../dist/pinpoint.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script>
+
+  QUnit.test( "Basic map", function( assert ) { 
+  
+      var data = {
+        "hed": "The U.K. and France",
+        "dek": "This is a test map.",
+        "lat": 51.5049378,
+        "lon": - 0.0870377,
+        "zoom": 4,
+        "minimap": false,
+        "aspect-ratio": "tall",
+        "minimap-zoom-offset": - 5,
+        "note": "This is a note.",
+        "markers": [{
+            "lat": 51.5049378,
+            "lon": - 0.0870377,
+            "text": "",
+            "icon": "square",
+            "label-direction": "north",
+            "labelDirection": "north",
+            "label": "plain"
+        }]
+      };
+
+      data.el = '.test-map';
+      assert.throws(function(){
+        var p = new Pinpoint(data);
+      }, /Leaflet/);
+    });
+  </script>
+  
+</body>
+</html>
