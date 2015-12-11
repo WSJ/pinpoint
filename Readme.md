@@ -56,7 +56,7 @@ Pinpoint accepts a JavaScript object for configuration.
 
 option              | type     | default                                    | description
 ------------------- | -------- | ------------------------------------------ | ------------------
-element             | string   | "#map-el"                                  | CSS selector for map parent element.
+el                  | string   | "#map-el"                                  | CSS selector for map parent element.
 aspect-ratio        | string   | (required)                                 | The shape of the map: "wide" (3x2), "square" (1x1), or "tall" (5x6)
 lat                 | number   | (required)                                 | Latitude for map centre.
 lon                 | number   | (required)                                 | Longitude for map centre.
