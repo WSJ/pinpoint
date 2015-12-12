@@ -96,4 +96,21 @@ QUnit.test( "Marker placement", function( assert ) {
 
 });
 
+QUnit.test( "'element' property in config", function( assert ) { 
+  
+    var data = {
+      "lat": 51.5049378,
+      "lon": - 0.0870377,
+      "zoom": 4,
+      "aspect-ratio": "tall",
+      "markers": []
+    };
+
+    data.element = '.test-map';
+    var p = new Pinpoint(data);
+  
+    assert.ok( p instanceof Pinpoint );
+    p.remove();
+});
+
 
