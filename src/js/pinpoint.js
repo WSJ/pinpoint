@@ -11,7 +11,7 @@ function Pinpoint(opts){
 
     var that = this;
     this.opts = opts;
-    this.opts.el = this.opts.el || '#map-el';
+    this.opts.el = this.opts.element ||this.opts.el || '#map-el';
     this.element = document.querySelector(this.opts.el);
     this.opts.basemap = opts.basemap || 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     this.opts.basemapCredit = opts.basemapCredit || '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
