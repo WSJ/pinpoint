@@ -1,3 +1,5 @@
+Note: As of 2021, this tool has been deprecated and the repository is no longer being maintained.
+
 # Pinpoint
 
 A JavaScript library for creating beautifully simple maps in seconds, developed at The Wall Street Journal.
@@ -171,5 +173,3 @@ v1.0.1 (July 9, 2015)
 v1.0.0
 
 - Initial release
-
-
